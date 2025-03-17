@@ -1,7 +1,9 @@
-import SearchBarDiv from "../components/SearchBarDiv";
+import { useState } from "react";
+
 import MovieCard from "../components/MovieCard";
 
 import "../css/Home.css";
+import "../css/SearchBar.css";
 
 type Movie = {
   id: number;
@@ -11,6 +13,8 @@ type Movie = {
 };
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const movies: Movie[] = [
     {
       id: 1,
@@ -68,23 +72,37 @@ export default function Home() {
     },
   ];
 
-  const movieCards = movies.map((entry) => (
-    <MovieCard
-      key={entry.id}
-      poster={entry.poster}
-      year={entry.year}
-      title={entry.title}
-    />
-  ));
+  const movieCards = movies.map((entry) =>
+    entry.title.toLowerCase().startsWith(searchQuery) ? (
+      <MovieCard
+        key={entry.id}
+        poster={entry.poster}
+        year={entry.year}
+        title={entry.title}
+      />
+    ) : undefined
+  );
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(e.currentTarget.searchbar.value);
+    alert(searchQuery);
   }
 
   return (
     <main>
-      <SearchBarDiv handleSubmit={handleSubmit} />
+      <div className="search-bar-form">
+        <form method="get" onSubmit={handleSubmit}>
+          <input
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.currentTarget.value)}
+            type="text"
+            name="search-bar"
+            id="searchbar"
+            placeholder="Search for movies..."
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
       <div className="movie-cards">{movieCards}</div>
     </main>
   );
