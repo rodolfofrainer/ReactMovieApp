@@ -1,6 +1,13 @@
 import { createContext, useState, useContext, useEffect } from "react";
 
-const MovieContext = createContext();
+const defaultValue = {
+  favorites: [],
+  addToFavorites: () => {},
+  removeFromFavorites: () => {},
+  isFavorite: () => false,
+};
+
+const MovieContext = createContext(defaultValue);
 
 export const useMovieContext = () => useContext(MovieContext);
 

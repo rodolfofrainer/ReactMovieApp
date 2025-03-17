@@ -12,11 +12,13 @@ export default function MovieCard(movie: MovieCardProps) {
   const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext();
   const favorite = isFavorite(movie.id);
 
-  function onFavoriteClick(e) {
-    e.preventDefault();
-    if (favorite) removeFromFavorites(movie.id);
-    else addToFavorites(movie);
-  }
+  const handleClick = () => {
+    if (favorite) {
+      removeFromFavorites(movie.id);
+    } else {
+      addToFavorites(movie);
+    }
+  };
 
   return (
     <div className="movie-card">
@@ -28,7 +30,7 @@ export default function MovieCard(movie: MovieCardProps) {
         <div className="movie-overlay">
           <button
             className={`favorite-btn ${favorite ? "active" : ""}`}
-            onClick={onFavoriteClick}
+            onClick={handleClick}
           >
             ♥
           </button>

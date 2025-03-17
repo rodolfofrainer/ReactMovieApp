@@ -6,9 +6,9 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <main>
-      <MovieProvider>
-        <Header />
+    <MovieProvider>
+      <Header />
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -20,8 +20,8 @@ function App() {
             }
           />
         </Routes>
-      </MovieProvider>
-    </main>
+      </main>
+    </MovieProvider>
   );
 }
 
