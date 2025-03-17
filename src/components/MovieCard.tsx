@@ -1,19 +1,29 @@
 import "../css/MovieCard.css";
 
-export default function MovieCard() {
+type props = {
+  poster: string;
+  title: string;
+  year: string;
+};
+
+export default function MovieCard(props: props) {
+  function handleFavButton() {
+    alert("Fav");
+  }
+
   return (
     <div className="movie-card">
-      <img
-        className="movie-image"
-        src="src/assets/Image-Engine-Poster-District-9-DT9.webp"
-        alt="movie poster"
-      />
-      <div className="movie-info">
-        <p>⭐4.5</p>
-        <p style={{ marginRight: "10px" }}>Year</p>
+      <div className="movie-poster">
+        <img src={props.poster} alt={`${props.title} poster`} />
+        <div className="movie-overlay">
+          <button className="favorite-btn" onClick={handleFavButton}>
+            ♥
+          </button>
+        </div>
       </div>
-      <div className="important-movie-info">
-        <p>Movie title</p>
+      <div className="movie-info">
+        <h3>{props.title}</h3>
+        <p>{props.year}</p>
       </div>
     </div>
   );

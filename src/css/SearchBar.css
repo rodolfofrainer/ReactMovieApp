@@ -2,7 +2,9 @@
   margin: 10px 0;
   display: flex;
   align-items: center;
-  height: 10%;
+  height: 40px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .search-bar-form > form {
@@ -16,7 +18,7 @@
 .search-bar-form > form > input {
   width: 400px;
   margin-right: 10px;
-  height: 60%;
+  height: 100%;
   background-color: #929292;
   border: none;
   border-radius: 3px;
@@ -27,7 +29,7 @@
 }
 
 .search-bar-form > form > button {
-  max-height: 60%;
+  max-height: 100%;
   background-color: red;
   color: white;
   font-size: 1rem;

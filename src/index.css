@@ -7,15 +7,16 @@
 body {
   height: 100vh;
   width: 100%;
+}
+
+.app-body {
   display: flex;
   flex-direction: column;
   background-color: #6b6b6b;
 }
 
 main {
+  width: 100%;
   display: flex;
-  margin-right: auto;
-  margin-left: auto;
   flex-direction: column;
-  height: 90%;
 }

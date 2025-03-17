@@ -1,18 +1,12 @@
 import Header from "./components/Header";
-import SearchBarDiv from "./components/SearchBarDiv";
-import MovieCard from "./components/MovieCard";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <body>
+    <div className="app-body">
       <Header />
-      <main>
-        <SearchBarDiv />
-        <div className="movies-cards-container">
-          <MovieCard />
-        </div>
-      </main>
-    </body>
+      <Home />
+    </div>
   );
 }
 
