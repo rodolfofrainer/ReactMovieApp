@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPopularMovies, searchMovies } from "../services/api.js";
+import { getPopularMovies, searchMovies } from "../services/api.ts";
 
 import MovieCard from "../components/MovieCard";
 
@@ -33,7 +33,6 @@ export default function Home() {
     const loadPopularMovies = async () => {
       try {
         const popularMovies = await getPopularMovies();
-        console.log(popularMovies); // Check the structure here
         setMovies(popularMovies);
       } catch (err: any) {
         console.log(err);
@@ -61,10 +60,23 @@ export default function Home() {
       ));
   };
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(searchQuery);
-  }
+    if (!searchQuery.trim()) return;
+    if (loading) return;
+
+    setLoading(true);
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError("");
+    } catch (err) {
+      console.log(err);
+      setError("Something went wrong...");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main>
@@ -81,7 +93,14 @@ export default function Home() {
           <button type="submit">Search</button>
         </form>
       </div>
-      <div className="movie-cards">{movieCards()}</div>
+      {error ? (
+        <div className="error-message">Something went wrong</div>
+      ) : undefined}
+      {loading ? (
+        <div className="loading">loading</div>
+      ) : (
+        <div className="movie-cards">{movieCards()}</div>
+      )}
     </main>
   );
 }
