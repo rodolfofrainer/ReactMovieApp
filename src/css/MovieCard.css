@@ -1,7 +1,7 @@
 .movie-card {
   max-width: 200px;
   background-color: #929292;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.25rem;
   padding: 5px 5px 5px 5px;
   border-radius: 5px;
@@ -16,4 +16,8 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+
+.important-movie-info {
+  margin-top: 10px;
 }
