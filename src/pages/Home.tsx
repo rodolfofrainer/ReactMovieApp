@@ -77,9 +77,14 @@ export default function Home() {
     />
   ));
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log(e.currentTarget.searchbar.value);
+  }
+
   return (
     <main>
-      <SearchBarDiv />
+      <SearchBarDiv handleSubmit={handleSubmit} />
       <div className="movie-cards">{movieCards}</div>
     </main>
   );

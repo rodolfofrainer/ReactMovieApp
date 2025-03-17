@@ -1,9 +1,13 @@
 import "../css/SearchBar.css";
 
-export default function () {
+type props = {
+  handleSubmit: React.FormEventHandler<HTMLFormElement> | undefined;
+};
+
+export default function (props: props) {
   return (
     <div className="search-bar-form">
-      <form method="get">
+      <form method="get" onSubmit={props.handleSubmit}>
         <input
           type="text"
           name="search-bar"

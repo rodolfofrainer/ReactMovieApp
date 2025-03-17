@@ -22,6 +22,9 @@
   background-color: #929292;
   border: none;
   border-radius: 3px;
+  font-size: 1.25rem;
+  color: rgb(51, 51, 51);
+  padding: 10px;
 }
 
 .search-bar-form > form > input::placeholder {
