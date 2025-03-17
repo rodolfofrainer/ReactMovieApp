@@ -1,27 +1,11 @@
 import { useState, useEffect } from "react";
 import { getPopularMovies, searchMovies } from "../services/api.ts";
+import { Movie } from "../types/Movie.tsx";
 
 import MovieCard from "../components/MovieCard";
 
 import "../css/Home.css";
 import "../css/SearchBar.css";
-
-type Movie = {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -52,6 +36,7 @@ export default function Home() {
       )
       .map((filteredMovie) => (
         <MovieCard
+          id={filteredMovie.id}
           key={filteredMovie.id}
           poster={filteredMovie.poster_path}
           year={filteredMovie.release_date.substring(0, 4)}

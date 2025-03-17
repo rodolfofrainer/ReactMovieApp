@@ -10,11 +10,6 @@ main {
   flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
-}
-
-.app-body {
-  display: flex;
-  flex-direction: column;
   background-color: #6b6b6b;
 }
 
