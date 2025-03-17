@@ -1,0 +1,20 @@
+header {
+  background-color: #3a3a3a;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > div > button {
+  background-color: transparent;
+  color: white;
+  font-size: 1.25rem;
+  border: none;
+  margin-left: 20px;
+}
+
+header > .links > button {
+  margin: 0 30px 0 0;
+}

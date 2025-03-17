@@ -11,64 +11,10 @@ body {
   background-color: #6b6b6b;
 }
 
-header {
-  background-color: #3a3a3a;
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header > div > button {
-  background-color: transparent;
-  color: white;
-  font-size: 1.25rem;
-  border: none;
-  margin-left: 20px;
-}
-
-header > .links > button {
-  margin: 0 30px 0 0;
-}
-
 main {
   display: flex;
-
-  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  flex-direction: column;
   height: 90%;
-}
-
-.search-bar-form {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  height: 10%;
-}
-
-.search-bar-form > form {
-  height: 100%;
-}
-
-.search-bar-form > form > input {
-  width: 400px;
-  margin-right: 10px;
-  height: 100%;
-  background-color: #929292;
-  border: none;
-  border-radius: 3px;
-}
-
-.search-bar-form > form > input::placeholder {
-  color: rgb(202, 202, 202);
-}
-
-.search-bar-form > form > button {
-  background-color: red;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 10px;
-  border: transparent;
-  border-radius: 3px;
 }

@@ -1,3 +1,5 @@
+import "../css/SearchBar.css";
+
 export default function () {
   return (
     <div className="search-bar-form">
