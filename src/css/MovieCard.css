@@ -1,10 +1,10 @@
 .movie-card {
-  width: 12%;
+  width: 150px;
   background-color: rgb(0, 0, 0);
 }
 
 .movie-poster > img {
-  max-width: 100%;
+  width: 100%;
 }
 
 .movie-info {

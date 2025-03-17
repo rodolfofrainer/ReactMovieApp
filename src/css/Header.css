@@ -7,7 +7,7 @@ header {
   align-items: center;
 }
 
-header > div > button {
+header > div > a > button {
   background-color: transparent;
   color: white;
   font-size: 1.25rem;
@@ -15,6 +15,6 @@ header > div > button {
   margin-left: 20px;
 }
 
-header > .links > button {
+header > .links > a > button {
   margin: 0 30px 0 0;
 }

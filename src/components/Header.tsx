@@ -4,11 +4,17 @@ export default function Header() {
   return (
     <header>
       <div className="logo">
-        <button>Movie App</button>
+        <a href="/">
+          <button>Movie App</button>
+        </a>
       </div>
       <div className="links">
-        <button className="home">Home</button>
-        <button className="favorites">Favorites</button>
+        <a href="/">
+          <button className="home">Home</button>
+        </a>
+        <a href="/favorites">
+          <button className="favorites">Favorites</button>
+        </a>
       </div>
     </header>
   );

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getPopularMovies, searchMovies } from "../services/api.js";
 
 import MovieCard from "../components/MovieCard";
 
@@ -6,82 +7,59 @@ import "../css/Home.css";
 import "../css/SearchBar.css";
 
 type Movie = {
+  adult: boolean;
+  backdrop_path: string | null;
+  genre_ids: number[];
   id: number;
-  poster: string;
-  year: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
   title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 };
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  const movies: Movie[] = [
-    {
-      id: 1,
-      poster: "src/assets/psoter.webp",
-      year: "2007",
-      title: "Deadpool",
-    },
-    {
-      id: 2,
-      poster: "src/assets/psoter.webp",
-      year: "2008",
-      title: "Godfather",
-    },
-    {
-      id: 3,
-      poster: "src/assets/psoter.webp",
-      year: "2004",
-      title: "Mr. Monk",
-    },
-    {
-      id: 4,
-      poster: "src/assets/psoter.webp",
-      year: "2002",
-      title: "Lord Of The Ring",
-    },
-    {
-      id: 5,
-      poster: "src/assets/psoter.webp",
-      year: "2005",
-      title: "No country for old men",
-    },
-    {
-      id: 6,
-      poster: "src/assets/psoter.webp",
-      year: "2005",
-      title: "District 9",
-    },
-    {
-      id: 7,
-      poster: "src/assets/psoter.webp",
-      year: "2008",
-      title: "Stay Alive",
-    },
-    {
-      id: 8,
-      poster: "src/assets/psoter.webp",
-      year: "2000",
-      title: "Watchmen",
-    },
-    {
-      id: 9,
-      poster: "src/assets/psoter.webp",
-      year: "2002",
-      title: "Cinema Paradiso",
-    },
-  ];
+  useEffect(() => {
+    const loadPopularMovies = async () => {
+      try {
+        const popularMovies = await getPopularMovies();
+        console.log(popularMovies); // Check the structure here
+        setMovies(popularMovies);
+      } catch (err: any) {
+        console.log(err);
+        setError("Failed to load movies...");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const movieCards = movies.map((entry) =>
-    entry.title.toLowerCase().startsWith(searchQuery) ? (
-      <MovieCard
-        key={entry.id}
-        poster={entry.poster}
-        year={entry.year}
-        title={entry.title}
-      />
-    ) : undefined
-  );
+    loadPopularMovies();
+  }, []);
+
+  const movieCards = () => {
+    return movies
+      .filter((movie: Movie) =>
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      .map((filteredMovie) => (
+        <MovieCard
+          key={filteredMovie.id}
+          poster={filteredMovie.poster_path}
+          year={filteredMovie.release_date.substring(0, 4)}
+          title={filteredMovie.title}
+        />
+      ));
+  };
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -103,7 +81,7 @@ export default function Home() {
           <button type="submit">Search</button>
         </form>
       </div>
-      <div className="movie-cards">{movieCards}</div>
+      <div className="movie-cards">{movieCards()}</div>
     </main>
   );
 }
