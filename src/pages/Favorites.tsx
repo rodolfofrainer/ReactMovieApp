@@ -7,6 +7,7 @@ export default function Favorites() {
   const { favorites } = useMovieContext();
 
   if (favorites.length > 0) {
+    console.log(favorites);
     return (
       <div className="favorites">
         <h2>Your Favorites</h2>
@@ -14,10 +15,10 @@ export default function Favorites() {
           {favorites.map((movie: Movie) => (
             <MovieCard
               key={movie.id}
-              id={movie.id}
-              poster={movie.poster_path}
-              year={movie.release_date.substring(0, 4)}
+              poster={movie.poster}
               title={movie.title}
+              year={movie.year}
+              id={movie.id}
             />
           ))}
         </div>

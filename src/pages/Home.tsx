@@ -34,13 +34,13 @@ export default function Home() {
       .filter((movie: Movie) =>
         movie.title.toLowerCase().includes(searchQuery.toLowerCase())
       )
-      .map((filteredMovie) => (
+      .map((filteredMovie: Movie) => (
         <MovieCard
-          id={filteredMovie.id}
           key={filteredMovie.id}
           poster={filteredMovie.poster_path}
-          year={filteredMovie.release_date.substring(0, 4)}
           title={filteredMovie.title}
+          year={filteredMovie.release_date.substring(0, 4)}
+          id={filteredMovie.id}
         />
       ));
   };
