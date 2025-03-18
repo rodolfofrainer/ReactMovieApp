@@ -32,7 +32,7 @@ export const MovieProvider = ({ children }) => {
   }, [favorites]);
 
   const addToFavorites = (movie: Movie) => {
-    setFavorites((prev: Movie[]) => {
+    setFavorites((prev) => {
       const updatedFavorites = [...prev, movie];
       return updatedFavorites;
     });

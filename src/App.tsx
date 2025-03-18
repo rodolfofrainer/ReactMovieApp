@@ -11,14 +11,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/favorites"
-            element={
-              <div className="fav-div">
-                <Favorites />
-              </div>
-            }
-          />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </main>
     </MovieProvider>

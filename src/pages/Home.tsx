@@ -37,7 +37,7 @@ export default function Home() {
       .map((filteredMovie: Movie) => (
         <MovieCard
           key={filteredMovie.id}
-          poster={filteredMovie.poster_path}
+          poster_path={filteredMovie.poster_path}
           title={filteredMovie.title}
           year={filteredMovie.release_date.substring(0, 4)}
           id={filteredMovie.id}
@@ -82,7 +82,7 @@ export default function Home() {
         <div className="error-message">Something went wrong</div>
       ) : undefined}
       {loading ? (
-        <div className="loading">loading</div>
+        <div className="loading">loading...</div>
       ) : (
         <div className="movie-cards">{movieCards()}</div>
       )}

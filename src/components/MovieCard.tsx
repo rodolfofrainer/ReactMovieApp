@@ -2,7 +2,7 @@ import "../css/MovieCard.css";
 import { useMovieContext } from "../contexts/MovieContext";
 
 type MovieCardProps = {
-  poster: string;
+  poster_path: string;
   title: string;
   year: string;
   id: number;
@@ -24,7 +24,7 @@ export default function MovieCard(movie: MovieCardProps) {
     <div className="movie-card">
       <div className="movie-poster">
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster}`}
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={`${movie.title} poster`}
         />
         <div className="movie-overlay">

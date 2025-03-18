@@ -6,3 +6,10 @@
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
+
+.loading {
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 2rem;
+  color: white;
+}

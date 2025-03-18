@@ -15,7 +15,7 @@ export default function Favorites() {
           {favorites.map((movie: Movie) => (
             <MovieCard
               key={movie.id}
-              poster={movie.poster}
+              poster_path={movie.poster}
               title={movie.title}
               year={movie.year}
               id={movie.id}
@@ -27,7 +27,7 @@ export default function Favorites() {
   }
 
   return (
-    <div className="favorites">
+    <div className="favorites-empty">
       <h2>No Favorite Movies Yet</h2>
       <p>Start adding movies to your favorites and they will appear here.</p>
     </div>
